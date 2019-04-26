@@ -41,16 +41,16 @@ class ShareController extends Controller
     {
         //
         $request->validate([
-            'share_judul'=>'required|string',
-            'share_penerbit'=> 'required|string',
-            'share_tahun_terbit' => 'required|integer',
-            'share_pengarang' => 'required|string'
+            'share_judul'=>'string',
+            'share_penerbit'=> 'string',
+            'share_tahun_terbit' => 'integer',
+            'share_pengarang' => 'string'
           ]);
           $share = new Share([
-            'share_judul' => $request->get('share_judul'),
-            'share_penerbit'=> $request->get('share_penebit'),
-            'share_tahun_terbit'=> $request->get('share_tahun_terbit'),
-            'share_pengarang' => $request->get('share_pengarang')
+            'judul' => $request->get('judul'),
+            'penerbit'=> $request->get('penebit'),
+            'tahun_terbit'=> $request->get('tahun_terbit'),
+            'pengarang' => $request->get('pengarang')
           ]);
           $share->save();
           return redirect('/shares')->with('success', 'Stock has been added');
@@ -76,6 +76,9 @@ class ShareController extends Controller
     public function edit($id)
     {
         //
+        $share = Share::find($id);
+
+        return view('shares.edit', compact('share'));
     }
 
     /**
@@ -88,6 +91,21 @@ class ShareController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'judul'=>'string',
+            'penerbit'=> 'string',
+            'tahun_terbit' => 'integer',
+            'pengarang' => 'string'
+          ]);
+    
+          $share = Share::find($id);
+          $share->judul = $request->get('judul');
+          $share->penerbit = $request->get('penerbit');
+          $share->tahun_terbit = $request->get('tahun_terbit');
+          $share->pengarang = $request->get('pengarang');
+          $share->save();
+    
+          return redirect('/shares')->with('success', 'Stock has been updated');
     }
 
     /**
@@ -99,5 +117,9 @@ class ShareController extends Controller
     public function destroy($id)
     {
         //
+        $share = Share::find($id);
+        $share->delete();
+
+        return redirect('/shares')->with('success', 'Stock has been deleted Successfully');
     }
 }

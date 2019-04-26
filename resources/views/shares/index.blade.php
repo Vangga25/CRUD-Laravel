@@ -27,10 +27,10 @@
         @foreach($shares as $share)
         <tr>
             <td>{{$share->id}}</td>
-            <td>{{$share->share_judul}}</td>
-            <td>{{$share->share_penerbit}}</td>
-            <td>{{$share->share_tahun_terbit}}</td>
-            <td>{{$share->share_pengarang}}</td>
+            <td>{{$share->judul}}</td>
+            <td>{{$share->penerbit}}</td>
+            <td>{{$share->tahun_terbit}}</td>
+            <td>{{$share->pengarang}}</td>
             <td><a href="{{ route('shares.edit',$share->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('shares.destroy', $share->id)}}" method="post">

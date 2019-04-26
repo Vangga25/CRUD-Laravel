@@ -24,19 +24,19 @@
           <div class="form-group">
               @csrf
               <label for="judul">Judul:</label>
-              <input type="text" class="form-control" name="share_judul"/>
+              <input type="text" class="form-control" name="judul"/>
           </div>
           <div class="form-group">
               <label for="penerbit">Penerbit :</label>
-              <input type="text" class="form-control" name="share_penerbit"/>
+              <input type="text" class="form-control" name="penerbit"/>
           </div>
           <div class="form-group">
               <label for="tahun_terbit">Tahun Terbit:</label>
-              <input type="text" class="form-control" name="share_tahun_terbit"/>
+              <input type="text" class="form-control" name="tahun_terbit"/>
           </div>
           <div class="form-group">
               <label for="pengarang">Pengarang:</label>
-              <input type="text" class="form-control" name="share_pengarang"/>
+              <input type="text" class="form-control" name="pengarang"/>
           </div>
           <button type="submit" class="btn btn-primary">Add</button>
       </form>
